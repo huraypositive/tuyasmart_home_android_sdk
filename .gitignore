@@ -43,3 +43,4 @@ tmp
 keystore.jks
 map.txt
 projectFilesBackup
+TuyaSmartHomeSdkDemo/app/src/main/assets/*.bmp
