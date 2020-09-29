@@ -116,7 +116,6 @@ public class DeviceListFragmentPresenter extends BasePresenter implements NetWor
         } else {
             gotoDeviceCommonActivity(devBean);
         }
-
     }
 
     private void gotoDeviceCommonActivity(DeviceBean devBean) {
@@ -206,7 +205,7 @@ public class DeviceListFragmentPresenter extends BasePresenter implements NetWor
         ActivityUtils.gotoActivity(mActivity, AddDeviceTypeActivity.class, ActivityUtils.ANIMATE_SLIDE_TOP_FROM_BOTTOM, false);
     }
 
-    //添加设备
+    //기기 추가
     public void addDevice() {
         final WifiManager mWifiManager = (WifiManager) mActivity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if (!mWifiManager.isWifiEnabled()) {

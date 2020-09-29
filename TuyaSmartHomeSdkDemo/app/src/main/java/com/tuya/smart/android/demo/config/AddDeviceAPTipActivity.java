@@ -15,7 +15,7 @@ import com.tuya.smart.android.demo.base.utils.ActivityUtils;
 
 
 /**
- * 热点模式: 添加设备页面
+ * 핫스팟 모드 : 장치 추가 페이지
  * <p>
  * Created by sunch on 16/6/21.
  */
@@ -70,10 +70,10 @@ public class AddDeviceAPTipActivity extends BaseActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.status_light_option) {
-            // 切换至设备wifi工作页面
+            // 기기 Wi-Fi 작업 페이지로 전환
             gotoNextActivity();
         } else if (v.getId() == R.id.status_light_help) {
-            // 切换至帮助页面
+            // 도움말 페이지로 전환
             ActivityUtils.gotoAddDeviceHelpActivity(this, getString(R.string.ty_ez_help));
         }
     }

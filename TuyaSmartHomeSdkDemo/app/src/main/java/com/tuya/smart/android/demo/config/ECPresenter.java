@@ -198,8 +198,7 @@ public class ECPresenter extends BasePresenter {
         if (!NetworkUtil.isNetworkAvailable(mActivity) || TextUtils.isEmpty(ssid)) {
             ToastUtil.showToast(mActivity, R.string.connect_phone_to_network);
         } else {
-            //对密码进行加密处理
-
+            //비밀번호 암호화
             if (!is5GHz(ssid, mActivity)) {
                 gotoBindDeviceActivity(ssid, passWord);
             } else {

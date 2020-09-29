@@ -83,7 +83,6 @@ public class ECBindPresenter extends BasePresenter {
                 }
             }
         });
-
     }
 
     private void initConfigDevice(String token) {
@@ -109,14 +108,14 @@ public class ECBindPresenter extends BasePresenter {
     }
 
     /**
-     * 重新开始配置
+     * 구성 다시 시작
      */
     public void reStartEZConfig() {
-        //ap模式重试,要重新切回到EC模式里
+        //ap 모드로 다시 시도하고 EC 모드로 다시 전환하십시오.
         if (mConfigMode == ECActivity.AP_MODE) {
             ActivityUtils.startActivity((Activity) mContext, new Intent(mContext, AddDeviceTipActivity.class), ActivityUtils.ANIMATE_FORWARD, true);
         } else {
-            //EZ模式只有在token获取失败的时候可以重试进行配网。
+            //EZ 모드에서는 토큰 획득에 실패한 경우에만 네트워크 구성을 재 시도 할 수 있습니다.
             goToEZActivity();
         }
     }
@@ -135,12 +134,12 @@ public class ECBindPresenter extends BasePresenter {
             case MESSAGE_CONFIG_WIFI_OUT_OF_TIME:
                 checkLoop();
                 break;
-            //网络错误异常情况
-            case DeviceBindModel.WHAT_EC_GET_TOKEN_ERROR:            //获取token失败
+            //네트워크 오류 예외
+            case DeviceBindModel.WHAT_EC_GET_TOKEN_ERROR:            //토큰을 얻지 못했습니다.
                 stopSearch();
                 mView.showNetWorkFailurePage();
                 break;
-            //ec激活失败
+            //EC 활성화 실패
             case DeviceBindModel.WHAT_EC_ACTIVE_ERROR:
                 L.d(TAG, "ec_active_error");
                 stopSearch();
@@ -151,7 +150,7 @@ public class ECBindPresenter extends BasePresenter {
                 mView.showFailurePage();
                 break;
 
-            //AP激活失败
+            //AP 활성화 실패
             case DeviceBindModel.WHAT_AP_ACTIVE_ERROR:
                 L.d(TAG, "ap_active_error");
                 stopSearch();
@@ -165,8 +164,8 @@ public class ECBindPresenter extends BasePresenter {
                     WiFiUtil.removeNetwork(mContext, currentSSID);
                 break;
 
-            case DeviceBindModel.WHAT_EC_ACTIVE_SUCCESS:  //EC激活成功
-            case DeviceBindModel.WHAT_AP_ACTIVE_SUCCESS:  //AP激活成功
+            case DeviceBindModel.WHAT_EC_ACTIVE_SUCCESS:  //EC가 성공적으로 활성화되었습니다.
+            case DeviceBindModel.WHAT_AP_ACTIVE_SUCCESS:  //AP가 성공적으로 활성화되었습니다.
                 L.d(TAG, "active_success");
                 DeviceBean configDev = (DeviceBean) ((Result)msg.obj).getObj();
                 stopSearch();
@@ -211,7 +210,7 @@ public class ECBindPresenter extends BasePresenter {
         }
     }
 
-    //配网成功
+    //성공적으로 배포
     private void configSuccess(DeviceBean deviceBean) {
         if (deviceBean != null){
             Toast.makeText(mContext,"the device id is: " + deviceBean.getDevId(), Toast.LENGTH_SHORT).show();
@@ -222,7 +221,7 @@ public class ECBindPresenter extends BasePresenter {
         mHandler.sendEmptyMessageDelayed(MESSAGE_SHOW_SUCCESS_PAGE, 1000);
     }
 
-    //暂停配网
+    //네트워크 배포 중단
     private void stopSearch() {
         mStop = true;
         mHandler.removeMessages(MESSAGE_CONFIG_WIFI_OUT_OF_TIME);
@@ -230,14 +229,14 @@ public class ECBindPresenter extends BasePresenter {
     }
 
     /**
-     * 进入分享页面
+     * 공유 페이지 입력
      */
     public void gotoShareActivity() {
 //        ActivityUtils.gotoActivity((Activity) mContext, SharedActivity.class, ActivityUtils.ANIMATE_FORWARD, true);
     }
 
     /**
-     * 查看帮助
+     * 도움말보기
      */
     public void goForHelp() {
         Intent intent = new Intent(mContext, BrowserActivity.class);

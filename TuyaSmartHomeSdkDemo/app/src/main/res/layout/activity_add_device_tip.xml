@@ -41,7 +41,7 @@
         android:layout_marginRight="@dimen/mg_30"
         android:orientation="vertical">
 
-        <!--快闪/慢闪状态-->
+        <!--빠르게 깜박임 / 느린 깜박임 상태-->
         <Button
             android:id="@+id/status_light_option"
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
             android:textColor="@color/text_color1"
             android:textSize="@dimen/ts_16"/>
 
-        <!--其他状态-->
+        <!--기타 상태-->
         <Button
             android:id="@+id/status_light_help"
             android:layout_width="match_parent"

@@ -23,7 +23,7 @@ import com.tuya.smart.sdk.TuyaSdk;
 
 
 /**
- * 登录逻辑
+ * 로그인 로직
  * <p/>
  * Created by sunch on 16/6/4.
  */
@@ -44,7 +44,7 @@ public class LoginPresenter extends BasePresenter {
         initCountryInfo();
     }
 
-    // 初始化国家/地区信息
+    // 국가 / 지역 정보 초기화
     private void initCountryInfo() {
         String countryKey = CountryUtils.getCountryKey(TuyaSdk.getApplication());
         if (!TextUtils.isEmpty(countryKey)) {
@@ -59,12 +59,12 @@ public class LoginPresenter extends BasePresenter {
         mView.setCountry(mCountryName, mCountryCode);
     }
 
-    // 选择国家/地区信息
+    // 국가 / 지역 정보 선택
     public void selectCountry() {
         mContext.startActivityForResult(new Intent(mContext, CountryListActivity.class), 0x01);
     }
 
-    // 登录
+    // 로그인
     public void login(String userName, String password) {
 
         if (!ValidatorUtil.isEmail(userName)) {
@@ -87,18 +87,19 @@ public class LoginPresenter extends BasePresenter {
         }
     };
 
+    // package com.tuya.smart.android.mvp.presenter; 투야에서 상속한 BasePresenter 의
     @Override
     public boolean handleMessage(Message msg) {
         switch (msg.what) {
             case MSG_LOGIN_SUCCESS:
-                // 登录成功
+                // 성공적 로그인
                 mView.modelResult(msg.what, null);
                 Constant.finishActivity();
                 LoginHelper.afterLogin();
                 ActivityUtils.gotoHomeActivity(mContext);
                 break;
             case MSG_LOGIN_FAILURE:
-                // 登录失败
+                // 로그인 실패
                 mView.modelResult(msg.what, (Result) msg.obj);
                 break;
             default:

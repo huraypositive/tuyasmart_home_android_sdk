@@ -17,7 +17,7 @@ import com.tuya.smart.android.demo.base.utils.ActivityUtils;
 
 
 /**
- * 快连模式: 添加设备页面
+ * 빠른 연결 모드 : 장치 추가 페이지
  * Created by ccx on 16/3/29.
  */
 public class AddDeviceTipActivity extends BaseActivity implements View.OnClickListener {
@@ -83,7 +83,7 @@ public class AddDeviceTipActivity extends BaseActivity implements View.OnClickLi
             ActivityUtils.startActivity(AddDeviceTipActivity.this, intent, ActivityUtils.ANIMATE_FORWARD, true);
 
         } else if (v.getId() == R.id.status_light_help) {
-            // 切换至帮助页面
+            // 도움말 페이지로 전환
             ActivityUtils.gotoAddDeviceHelpActivity(this, getString(R.string.ty_ez_help));
         }
     }

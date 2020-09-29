@@ -69,7 +69,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
     }
 
 
-    // 注册按钮
+    // 등록 버튼
     private void initMenu() {
         setMenu(R.menu.toolbar_login_menu, new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -95,7 +95,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
     }
 
 
-    // 输入账号监听
+    // 계정 모니터링 입력
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -114,10 +114,10 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
             disableLogin();
         } else {
             if (ValidatorUtil.isEmail(userName)) {
-                // 邮箱
+                // 로그인 가능
                 enableLogin();
             } else {
-                // 手机号码
+                // 휴대전화번호
                 try {
                     Long.valueOf(userName);
                     enableLogin();
@@ -148,7 +148,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
     public void onClickPasswordSwitch() {
         passwordOn = !passwordOn;
 
-        // 切换显示图标
+        // 디스플레이 아이콘 전환
         if (passwordOn) {
             mPasswordSwitch.setImageResource(R.drawable.ty_password_on);
             mPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
@@ -157,7 +157,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
             mPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }
 
-        // 更新光标位置
+        // 커서 위치 업데이트
         if (mPassword.getText().length() > 0) {
             mPassword.setSelection(mPassword.getText().length());
         }
@@ -165,7 +165,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
 
     @OnClick(R.id.login_submit)
     public void onClickLogin() {
-        // 登录
+        // 로그인
         if (mLoginSubmit.isEnabled()) {
             String userName = mUserName.getText().toString();
             if (!ValidatorUtil.isEmail(userName) && mCountryName.getText().toString().contains("+86") && mUserName.getText().length() != 11) {
@@ -205,7 +205,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, TextWatch
         }
     }
 
-    // 登录按钮状态
+    // 로그인 버튼 상태
     public void enableLogin() {
         if (!mLoginSubmit.isEnabled()) mLoginSubmit.setEnabled(true);
     }
